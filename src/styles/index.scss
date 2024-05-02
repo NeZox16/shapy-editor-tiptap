@@ -1,0 +1,45 @@
+.ProseMirror {
+  @apply caret-black outline-0 pr-8 pl-20 py-16 z-0 lg:pl-8 lg:pr-8;
+
+  & > * {
+    @apply mx-auto max-w-2xl;
+  }
+
+  .selection {
+    @apply inline;
+  }
+
+  .selection,
+  *::selection {
+    @apply bg-gs-green;
+  }
+
+  & > .react-renderer {
+    @apply my-12 first:mt-0 last:mb-0;
+  }
+
+  &.resize-cursor {
+    @apply cursor-col-resize;
+  }
+
+  .ProseMirror-gapcursor {
+    @apply relative w-full max-w-2xl mx-auto;
+
+    &:after {
+      @apply border-t-gs-white  w-full -top-[1.5em] max-w-2xl mx-auto left-0 right-0;
+    }
+  }
+}
+
+[data-theme="slash-command"] {
+  width: 1000vw;
+}
+
+@import "./partials/animations.scss";
+@import "./partials/blocks.scss";
+@import "./partials/code.scss";
+@import "./partials/lists.scss";
+@import "./partials/placeholder.scss";
+@import "./partials/table.scss";
+@import "./partials/mathematics.scss";
+@import "./partials/typography.scss";

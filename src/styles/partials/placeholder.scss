@@ -1,0 +1,38 @@
+.ProseMirror {
+  /* Placeholder Styles */
+  .is-empty::before {
+    @apply text-gs-white/40 float-left h-0 pointer-events-none w-full;
+  }
+
+  &.ProseMirror-focused {
+    /* Slashmenu Placeholder */
+    > p.has-focus.is-empty::before {
+      content: "Введите / чтобы просмотреть варианты";
+    }
+
+    > [data-type="columns"]
+      > [data-type="column"]
+      > p.is-empty.has-focus::before {
+      content: "Введите / чтобы просмотреть варианты";
+    }
+  }
+
+  /* Default Placeholder */
+  & > .is-editor-empty::before {
+    content: "Нажмите здесь, чтобы начать писать ...";
+  }
+
+  /* Blockquote Placeholder */
+  blockquote .is-empty:not(.is-editor-empty):first-child:last-child::before {
+    content: "Введите цитату";
+  }
+
+  blockquote + figcaption.is-empty:not(.is-editor-empty)::before {
+    content: "Автор";
+  }
+
+  [data-placeholder][data-suggestion]::before,
+  [data-placeholder][data-suggestion] *::before {
+    content: none !important;
+  }
+}
