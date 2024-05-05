@@ -10,9 +10,14 @@ declare global {
   }
 }
 
-export const useBlockEditor = ({ ydoc }: { ydoc: YDoc }) => {
+type TUseBlockEditor = {
+  editable?: boolean;
+};
+
+export const useBlockEditor = ({ editable = true }: TUseBlockEditor) => {
   const editor = useEditor(
     {
+      editable: editable,
       autofocus: true,
       onCreate: ({ editor }) => {
         if (editor.isEmpty) {
@@ -25,7 +30,7 @@ export const useBlockEditor = ({ ydoc }: { ydoc: YDoc }) => {
           autocomplete: "off",
           autocorrect: "off",
           autocapitalize: "off",
-          class: "min-h-full",
+          class: "",
         },
       },
     },

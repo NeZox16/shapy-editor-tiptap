@@ -64,7 +64,7 @@ export const ColumnsMenu = ({ editor, appendTo, lang }: MenuProps | any) => {
           active={editor.isActive('columns', { layout: ColumnLayout.TwoColumn })}
           onClick={onColumnTwo}
         >
-          <Icon name="Columns" />
+          <Icon name="Columns2" />
         </Toolbar.Button>
         <Toolbar.Button
           tooltip={lang.extension.MultiColumn.ColumnMenu.tooltip.sidebarRight}

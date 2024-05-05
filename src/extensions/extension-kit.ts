@@ -40,12 +40,15 @@ import {
   TaskItem,
   TaskList,
   Mathematics,
+  Mention,
+  Hints,
 } from ".";
 import { CodeBlockLowlight } from "@tiptap/extension-code-block-lowlight";
 import { ImageUpload } from "./ImageUpload";
 import { TableOfContentsNode } from "./TableOfContentsNode";
 import { common, createLowlight } from "lowlight";
-
+import suggestion from "../lib/utils/suggestion";
+import { mergeAttributes } from "@tiptap/core";
 const lowlight = createLowlight(common);
 
 export const ExtensionKit = ({}) => [
@@ -139,6 +142,7 @@ export const ExtensionKit = ({}) => [
   Focus,
   Figcaption,
   BlockquoteFigure,
+  Hints,
   Dropcursor.configure({
     width: 2,
     class: "ProseMirror-dropcursor border-black",
@@ -148,6 +152,19 @@ export const ExtensionKit = ({}) => [
       const $pos = state.doc.resolve(pos);
       return node.type.name === "text" && $pos.parent.type.name !== "codeBlock";
     },
+  }),
+  Mention.configure({
+    renderHTML({ options, node }) {
+      return [
+        "a",
+        mergeAttributes(
+          { href: `/profile/${node.attrs.id}` },
+          options.HTMLAttributes
+        ),
+        `${options.suggestion.char}${node.attrs.label ?? node.attrs.id}`,
+      ];
+    },
+    suggestion: suggestion,
   }),
 ];
 

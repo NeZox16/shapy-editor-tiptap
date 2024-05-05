@@ -17,15 +17,15 @@ import { ContentItemMenu } from '../menus/ContentItemMenu'
 import { translate } from '@/src/lib/utils/i18n'
 
 
-export const BlockEditor = ({ ydoc, lang }: {ydoc: any, lang?: "en" | "ru"}) => {
+export const BlockEditor = ({lang }: { lang?: "en" | "ru"}) => {
   const menuContainerRef = useRef(null)
   const editorRef: any = useRef<PureEditorContent | null>(null)
 
-  const { editor } = useBlockEditor({ ydoc })
+  const { editor } = useBlockEditor({editable: true})
   const tLang = lang !== undefined ? translate[lang] : translate["en"]
   
   const json = editor?.getJSON()
-  // console.log(json);
+  console.log(json);
   
 
   if (!editor) {

@@ -25,6 +25,7 @@ export { TaskItem } from "@tiptap/extension-task-item";
 export { TaskList } from "@tiptap/extension-task-list";
 export { FileHandler } from "@tiptap-pro/extension-file-handler";
 export { Mathematics } from "@tiptap-pro/extension-mathematics";
+// export { Mention } from "@tiptap/extension-mention";
 
 export { Selection } from "./Selection";
 export { Table, TableCell, TableHeader, TableRow } from "./Table";
@@ -39,7 +40,9 @@ export { Figcaption } from "./Figcaption";
 export { BlockquoteFigure } from "./BlockquoteFigure";
 export { Quote } from "./BlockquoteFigure/Quote";
 export { QuoteCaption } from "./BlockquoteFigure/QuoteCaption";
+export { Hints } from "./Hints/Hints";
 export { Link } from "./Link";
+export { Mention } from "./Mention";
 export { ImageUpload } from "./ImageUpload";
 export { ImageBlock } from "./ImageBlock";
 export { Columns, Column } from "./MultiColumn";

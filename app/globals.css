@@ -8,14 +8,13 @@
   body {
     @apply bg-gs-default text-gs-white;
     @apply antialiased;
-
     font-size: 16px;
   }
 }
 
 html,
 body {
-  @apply bg-gs-default text-gs-white;
+  @apply bg-gs-default !text-gs-white;
 }
 
 input::placeholder,

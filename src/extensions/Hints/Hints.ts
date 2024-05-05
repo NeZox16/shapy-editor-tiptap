@@ -1,35 +1,49 @@
+import { Node, ReactNodeViewRenderer } from "@tiptap/react";
 import { mergeAttributes } from "@tiptap/core";
-import { Figure } from "../Figure";
-import { Quote } from "./Quote";
-import { QuoteCaption } from "./QuoteCaption";
+import { HintView } from "./components";
+import { HintContent } from "./HintContent";
+import { HintType } from "./HintIcon";
 
 declare module "@tiptap/core" {
-  // eslint-disable-next-line no-unused-vars
   interface Commands<ReturnType> {
-    blockquoteFigure: {
-      setBlockquote: () => ReturnType;
+    hintBlock: {
+      setInsertHint: () => ReturnType;
+      setHint: (
+        hint:
+          | "info"
+          | "warning"
+          | "danger"
+          | "success"
+          | "notice"
+          | "importent"
+          | "note"
+          | "tip"
+          | "question"
+      ) => ReturnType;
     };
   }
 }
 
-export const BlockquoteFigure = Figure.extend({
-  name: "blockquoteFigure",
+export const extensionName = "blockhint";
+
+export const Hints = Node.create({
+  name: "blockhint",
 
   group: "block",
 
-  content: "quote quoteCaption",
+  content: "hintType hintContent",
 
   isolating: true,
 
   addExtensions() {
-    return [Quote, QuoteCaption];
+    return [HintType, HintContent];
   },
 
-  renderHTML({ HTMLAttributes }) {
+  renderHTML({ HTMLAttributes, node }) {
     return [
       "figure",
       mergeAttributes(HTMLAttributes, { "data-type": this.name }),
-      ["div", {}, 0],
+      ["div", mergeAttributes(HTMLAttributes, { "data-type": this.name }), 0],
     ];
   },
 
@@ -47,7 +61,7 @@ export const BlockquoteFigure = Figure.extend({
 
   addCommands() {
     return {
-      setBlockquote:
+      setInsertHint:
         () =>
         ({ state, chain }) => {
           const position = state.selection.$from.start();
@@ -59,7 +73,10 @@ export const BlockquoteFigure = Figure.extend({
               type: this.name,
               content: [
                 {
-                  type: "quote",
+                  type: "hintType",
+                },
+                {
+                  type: "hintContent",
                   content: selectionContent.content.toJSON() || [
                     {
                       type: "paragraph",
@@ -69,9 +86,6 @@ export const BlockquoteFigure = Figure.extend({
                     },
                   ],
                 },
-                {
-                  type: "quoteCaption",
-                },
               ],
             })
             .focus(position + 1)
@@ -80,5 +94,3 @@ export const BlockquoteFigure = Figure.extend({
     };
   },
 });
-
-export default BlockquoteFigure;

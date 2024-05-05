@@ -15,8 +15,8 @@ type TPopoverProps = {
 
 const PopoverMenu = ({triggerContent, alingContent = 'start', children, propsOffset = 4, visibleCloseButton = false, modal = false}: TPopoverProps, props: Props) => {
   return (
-    <Popover.Root modal={modal}>
-        <Popover.Trigger>
+    <Popover.Root modal={modal} >
+        <Popover.Trigger asChild>
             {triggerContent}
         </Popover.Trigger>
         <Popover.Content

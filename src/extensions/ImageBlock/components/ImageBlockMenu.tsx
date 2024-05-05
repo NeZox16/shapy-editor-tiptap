@@ -4,13 +4,10 @@ import { Instance, sticky } from 'tippy.js'
 import { v4 as uuid } from 'uuid'
 
 import { Toolbar } from '@/src/components/ui/Toolbar'
-import { CustomIcon, Icon } from '@/src/components/ui/Icon'
+import { Icon } from '@/src/components/ui/Icon'
 import { ImageBlockWidth } from './ImageBlockWidth'
 import { MenuProps } from '@/src/components/menus/types'
 import { getRenderContainer } from '@/src/lib/utils'
-import PopoverMenu from '@/src/components/ui/Popover/Popover'
-import { Button } from '@/src/components/ui/Button'
-import { DialogComponent } from '@/src/components/ui/Dialog/Dialog'
 import { ImageAltMenu } from './ImageAltMenu'
 
 export const ImageBlockMenu = ({ editor, appendTo, lang }: MenuProps | any): JSX.Element => {
@@ -57,7 +54,7 @@ export const ImageBlockMenu = ({ editor, appendTo, lang }: MenuProps | any): JSX
   )
 
   return (
-    <BaseBubbleMenu
+      <BaseBubbleMenu
       editor={editor}
       pluginKey={`imageBlockMenu-${uuid()}`}
       shouldShow={shouldShow}

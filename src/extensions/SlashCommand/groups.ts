@@ -75,6 +75,15 @@ export const GROUPS: Group[] = [
         },
       },
       {
+        name: "hint",
+        label: "Блок-подсказок",
+        iconName: "Info",
+        description: "Element for hinting",
+        action: (editor) => {
+          editor.chain().focus().setInsertHint().run();
+        },
+      },
+      {
         name: "codeBlock",
         label: "Блок кода",
         iconName: "SquareCode",
@@ -100,7 +109,7 @@ export const GROUPS: Group[] = [
           editor
             .chain()
             .focus()
-            .insertTable({ rows: 3, cols: 3, withHeaderRow: false })
+            .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
             .run();
         },
       },
@@ -117,7 +126,7 @@ export const GROUPS: Group[] = [
       {
         name: "columns",
         label: "Столбцы",
-        iconName: "Columns",
+        iconName: "Columns2",
         description: "Add two column content",
         aliases: ["cols"],
         shouldBeHidden: (editor) => editor.isActive("columns"),

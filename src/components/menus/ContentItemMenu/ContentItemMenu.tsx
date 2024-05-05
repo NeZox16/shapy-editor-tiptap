@@ -9,6 +9,7 @@ import { DropdownButton } from '@/src/components/ui/Dropdown'
 import useContentItemActions from './hooks/useContentItemActions'
 import { useData } from './hooks/useData'
 import { FC, useEffect, useState } from 'react'
+import PopoverMenu from '../../ui/Popover/Popover'
 
 export type ContentItemMenuProps = {
   editor: Editor,

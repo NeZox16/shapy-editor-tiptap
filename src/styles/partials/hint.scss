@@ -1,0 +1,70 @@
+.ProseMirror {
+  figure[data-type="blockhint"] {
+    div[data-type="blockhint"] {
+      @apply border-l-2 w-full rounded-r flex items-start gap-2 break-all py-4 pr-4;
+      &:has(
+          > .react-renderer.node-hintType
+            > div[data-node-view-wrapper]
+            > button[data-hint="info"]
+        ) {
+        @apply border-[#284F9B] bg-[#284F9B]/10;
+      }
+      &:has(
+          > .react-renderer.node-hintType
+            > div[data-node-view-wrapper]
+            > button[data-hint="warning"]
+        ) {
+        @apply border-[#F27E3D] bg-[#F27E3D]/10;
+      }
+      &:has(
+          > .react-renderer.node-hintType
+            > div[data-node-view-wrapper]
+            > button[data-hint="danger"]
+        ) {
+        @apply border-[#A42E2E] bg-[#A42E2E]/10;
+      }
+      &:has(
+          > .react-renderer.node-hintType
+            > div[data-node-view-wrapper]
+            > button[data-hint="success"]
+        ) {
+        @apply border-[#17DC9B] bg-[#17DC9B]/10;
+      }
+      &:has(
+          > .react-renderer.node-hintType
+            > div[data-node-view-wrapper]
+            > button[data-hint="notice"]
+        ) {
+        @apply border-[#0D09D3] bg-[#0D09D3]/10;
+      }
+      &:has(
+          > .react-renderer.node-hintType
+            > div[data-node-view-wrapper]
+            > button[data-hint="importent"]
+        ) {
+        @apply border-[#4D0C8D] bg-[#4D0C8D]/10;
+      }
+      &:has(
+          > .react-renderer.node-hintType
+            > div[data-node-view-wrapper]
+            > button[data-hint="note"]
+        ) {
+        @apply border-[#4A4E4E] bg-[#4A4E4E]/10;
+      }
+      &:has(
+          > .react-renderer.node-hintType
+            > div[data-node-view-wrapper]
+            > button[data-hint="tip"]
+        ) {
+        @apply border-[#11B85E] bg-[#11B85E]/10;
+      }
+      &:has(
+          > .react-renderer.node-hintType
+            > div[data-node-view-wrapper]
+            > button[data-hint="question"]
+        ) {
+        @apply border-[#F0F35A] bg-[#F0F35A]/10;
+      }
+    }
+  }
+}

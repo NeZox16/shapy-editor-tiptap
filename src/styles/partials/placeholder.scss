@@ -27,6 +27,11 @@
     content: "Введите цитату";
   }
 
+  div[data-type="blockhint"]
+    .is-empty:not(.is-editor-empty):first-child:last-child::before {
+    content: "Введите подсказку";
+  }
+
   blockquote + figcaption.is-empty:not(.is-editor-empty)::before {
     content: "Автор";
   }

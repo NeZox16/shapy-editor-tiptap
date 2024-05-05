@@ -9,6 +9,7 @@ interface ImageBlockViewProps {
   node: Node & {
     attrs: {
       src: string
+      alt: string
     }
   }
   updateAttributes: (attrs: Record<string, string>) => void
