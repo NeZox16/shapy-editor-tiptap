@@ -154,18 +154,9 @@ export const ExtensionKit = ({}) => [
     },
   }),
   Mention.configure({
-    renderHTML({ options, node }) {
-      return [
-        "a",
-        mergeAttributes(
-          { href: `/profile/${node.attrs.id}` },
-          options.HTMLAttributes
-        ),
-        `${options.suggestion.char}${node.attrs.label ?? node.attrs.id}`,
-      ];
-    },
     suggestion: suggestion,
   }),
+  ,
 ];
 
 export default ExtensionKit;

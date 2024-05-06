@@ -1,4 +1,4 @@
-import { MentionList } from "@/src/extensions/Mention/components";
+import MentiobList from "@/src/extensions/Mention/components/MentiobList";
 import { ReactRenderer } from "@tiptap/react";
 import tippy from "tippy.js";
 
@@ -39,7 +39,7 @@ export default {
 
     return {
       onStart: (props) => {
-        component = new ReactRenderer(MentionList, {
+        component = new ReactRenderer(MentiobList, {
           props,
           editor: props.editor,
         });

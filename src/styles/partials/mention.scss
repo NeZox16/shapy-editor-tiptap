@@ -1,11 +1,11 @@
 .ProseMirror {
-  a[data-type="mentionPeople"] {
+  a[data-type="mantionCard"] {
     @apply hover:underline pb-1 transition-all hover:bg-white/10 rounded;
   }
 }
 
 .items {
-  @apply bg-gs-default-ghost rounded text-gs-white flex flex-col gap-1 p-1 relative border border-gs-white/20;
+  @apply bg-gs-default-ghost rounded text-gs-white overflow-hidden overflow-y-auto h-[250px] flex flex-col gap-1 p-1 relative border border-gs-white/20;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 

@@ -3,7 +3,7 @@ import { Node } from "@tiptap/core";
 export const HintContent = Node.create({
   name: "hintContent",
 
-  content: "paragraph+",
+  content: "paragraph*",
 
   defining: true,
 

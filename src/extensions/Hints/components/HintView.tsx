@@ -12,12 +12,11 @@ type Props = {
 }
 
 export const HintView = (props: Props) => {
-    const hintBlockButton = useRef<HTMLDivElement>(null)
     const { editor, node } = props
     
     return (
         <NodeViewWrapper>
-            <HintComp editor={editor} ref={hintBlockButton} />
+            <HintComp editor={editor}  />
         </NodeViewWrapper>
     )
 }
