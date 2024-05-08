@@ -48,7 +48,6 @@ import { ImageUpload } from "./ImageUpload";
 import { TableOfContentsNode } from "./TableOfContentsNode";
 import { common, createLowlight } from "lowlight";
 import suggestion from "../lib/utils/suggestion";
-import { mergeAttributes } from "@tiptap/core";
 const lowlight = createLowlight(common);
 
 export const ExtensionKit = ({}) => [
@@ -156,7 +155,6 @@ export const ExtensionKit = ({}) => [
   Mention.configure({
     suggestion: suggestion,
   }),
-  ,
 ];
 
 export default ExtensionKit;

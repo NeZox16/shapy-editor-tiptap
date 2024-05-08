@@ -2,7 +2,6 @@ import { Editor, useEditor } from "@tiptap/react";
 import type { Doc as YDoc } from "yjs";
 
 import { ExtensionKit } from "@/src/extensions/extension-kit";
-import { initialContent } from "@/src/lib/data/initialContent";
 
 declare global {
   interface Window {
@@ -21,8 +20,15 @@ export const useBlockEditor = ({ editable = true }: TUseBlockEditor) => {
       autofocus: true,
       onCreate: ({ editor }) => {
         if (editor.isEmpty) {
-          editor.commands.setContent(initialContent);
+          const item = window.localStorage.getItem("p_d");
+          if (item) {
+            editor.commands.setContent(JSON.parse(item));
+          }
         }
+      },
+      onUpdate: ({ editor }) => {
+        const json = editor.getJSON();
+        window.localStorage.setItem("p_d", JSON.stringify(json));
       },
       extensions: [...ExtensionKit({})],
       editorProps: {

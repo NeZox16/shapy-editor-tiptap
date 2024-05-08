@@ -1,7 +1,7 @@
 'use client'
 
 import { EditorContent, PureEditorContent } from '@tiptap/react'
-import React, { useMemo, useRef } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 
 import { LinkMenu } from '@/src/components/menus'
 
@@ -20,17 +20,15 @@ import { translate } from '@/src/lib/utils/i18n'
 export const BlockEditor = ({lang }: { lang?: "en" | "ru"}) => {
   const menuContainerRef = useRef(null)
   const editorRef: any = useRef<PureEditorContent | null>(null)
-
+  
   const { editor } = useBlockEditor({editable: true})
   const tLang = lang !== undefined ? translate[lang] : translate["en"]
   
-  const json = editor?.getJSON()
-  console.log(json);
   
-
   if (!editor) {
     return null
   }
+
 
 
   return (
