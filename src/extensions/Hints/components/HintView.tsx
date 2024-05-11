@@ -5,7 +5,15 @@ type Props = {
   editor: Editor
   node: Node & {
     attrs: {
-      hint: string
+      hint: | "info"
+      | "warning"
+      | "danger"
+      | "success"
+      | "notice"
+      | "important"
+      | "note"
+      | "tip"
+      | "question"
     }
   }
   updateAttributes: (attrs: Record<string, string>) => void
@@ -16,7 +24,7 @@ export const HintView = (props: Props) => {
     
     return (
         <NodeViewWrapper>
-            <HintComp editor={editor}  />
+            <HintComp editor={editor} attrs={node.attrs.hint}  />
         </NodeViewWrapper>
     )
 }

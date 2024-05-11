@@ -4,6 +4,7 @@ import Tippy from '@tippyjs/react/headless'
 import React, { useCallback } from 'react'
 
 import { TippyProps, TooltipProps } from './types'
+import { cn } from '@/src/lib/utils'
 
 const isMac = typeof window !== 'undefined' ? navigator.platform.toUpperCase().indexOf('MAC') >= 0 : false
 
@@ -32,11 +33,12 @@ export const Tooltip = ({
   title,
   shortcut,
   tippyOptions = {},
+  className
 }: TooltipProps): JSX.Element => {
   const renderTooltip = useCallback(
     (attrs: TippyProps) => (
       <span
-        className="flex items-center gap-2 px-2.5 py-1 bg-gs-default border border-gs-default-ghost rounded-lg shadow-sm z-[999]"
+        className={cn("flex items-center gap-2 px-2.5 py-1 bg-gs-default border border-gs-default-ghost rounded-lg shadow-sm z-[999]", className)}
         tabIndex={-1}
         data-placement={attrs['data-placement']}
         data-reference-hidden={attrs['data-reference-hidden']}

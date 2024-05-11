@@ -33,14 +33,14 @@ export const HintType = Node.create({
   parseHTML() {
     return [
       {
-        tag: "button",
+        tag: "hintType",
       },
     ];
   },
 
   renderHTML({ HTMLAttributes, node }) {
     return [
-      "button",
+      "hintType",
       mergeAttributes(HTMLAttributes, { "data-hint": node.attrs.hint }),
     ];
   },

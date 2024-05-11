@@ -2,27 +2,49 @@ import { DragEvent, useCallback, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { API } from "@/src/lib/api";
 
+interface IFile {
+  name: string;
+  type: string;
+  size: number;
+  url: string;
+}
+
 export const useUploader = ({
   onUpload,
 }: {
   onUpload: (url: string) => void;
 }) => {
   const [loading, setLoading] = useState(false);
+  const [files, setFiles] = useState<IFile[]>([]);
+  const uploadFile = useCallback(
+    async (file: any) => {
+      setLoading(true);
+      try {
+        console.log(file);
+        const url = await API.uploadImage();
+        const fileData: IFile = {
+          name: file.name,
+          size: file.size,
+          type: file.type.split("/")[1],
+          url: url,
+        };
+        setFiles((prev) => [
+          ...prev,
+          {
+            ...fileData,
+          },
+        ]);
+      } catch (errPayload: any) {
+        const error =
+          errPayload?.response?.data?.error || "Something went wrong";
+        toast.error(error);
+      }
+      setLoading(false);
+    },
+    [onUpload]
+  );
 
-  const uploadFile = useCallback(async () => {
-    setLoading(true);
-    try {
-      const url = await API.uploadImage();
-
-      onUpload(url);
-    } catch (errPayload: any) {
-      const error = errPayload?.response?.data?.error || "Something went wrong";
-      toast.error(error);
-    }
-    setLoading(false);
-  }, [onUpload]);
-
-  return { loading, uploadFile };
+  return { loading, uploadFile, files };
 };
 
 export const useFileUpload = () => {

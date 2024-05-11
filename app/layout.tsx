@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 
 import 'cal-sans'
 import { Header } from '@/src/components/Header/Header'
+import { Sidebar } from '@/src/components/Sidebar'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://demos.tiptap.dev'),

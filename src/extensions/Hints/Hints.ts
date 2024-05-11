@@ -35,6 +35,8 @@ export const Hints = Node.create({
 
   isolating: true,
 
+  defining: true,
+
   addExtensions() {
     return [HintType, HintContent];
   },
