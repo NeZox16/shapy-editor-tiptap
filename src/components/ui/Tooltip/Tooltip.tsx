@@ -17,7 +17,7 @@ export const Tooltip: FC<ITooltip> = ({children, targetChildren, targetClassName
     <TooltipRadix.Provider>
       <TooltipRadix.Root>
         <TooltipRadix.Trigger asChild>
-          <button onClick={onClick} data-hint={dataHint} className={cn("inline-flex h-[36px] w-[36px] items-center justify-center rounded outline-none focus:shadow-[0_0_0_2px] focus:shadow-black", targetClassName)}>
+          <button onClick={onClick} data-hint={dataHint} className={cn("inline-flex h-[36px] w-[36px] items-center justify-center rounded outline-none focus:shadow-[0_0_0_2px] focus:shadow-white/50", targetClassName)}>
             {targetChildren}
           </button>
         </TooltipRadix.Trigger>

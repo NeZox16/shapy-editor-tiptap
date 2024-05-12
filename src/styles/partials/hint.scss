@@ -40,7 +40,7 @@
       &:has(
           > .react-renderer.node-hintType
             > div[data-node-view-wrapper]
-            > button[data-hint="importent"]
+            > button[data-hint="important"]
         ) {
         @apply border-[#4D0C8D] bg-[#4D0C8D]/10;
       }
