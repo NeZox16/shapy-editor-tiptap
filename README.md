@@ -1,4 +1,4 @@
-# Created on base [Tiptap templates](https://tiptap.dev/) for use on main site.
+# shapy-editor
 
 ![scr01](https://github.com/NeZox16/shapy-editor-tiptap/assets/112339906/5ed8274b-a6a7-4151-9206-b6eef18d8094)
 
