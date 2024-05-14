@@ -8,10 +8,9 @@ export type LinkEditorPanelProps = {
   initialUrl?: string
   initialOpenInNewTab?: boolean
   onSetLink: (url: string, openInNewTab?: boolean) => void
-  lang?: any
 }
 
-export const useLinkEditorState = ({ initialUrl, initialOpenInNewTab, onSetLink, lang }: LinkEditorPanelProps) => {
+export const useLinkEditorState = ({ initialUrl, initialOpenInNewTab, onSetLink }: LinkEditorPanelProps) => {
   const [url, setUrl] = useState(initialUrl || '')
   const [openInNewTab, setOpenInNewTab] = useState(initialOpenInNewTab || false)
 
@@ -42,7 +41,7 @@ export const useLinkEditorState = ({ initialUrl, initialOpenInNewTab, onSetLink,
   }
 }
 
-export const LinkEditorPanel = ({ onSetLink, initialOpenInNewTab, initialUrl, lang }: LinkEditorPanelProps) => {
+export const LinkEditorPanel = ({ onSetLink, initialOpenInNewTab, initialUrl }: LinkEditorPanelProps) => {
   const state = useLinkEditorState({ onSetLink, initialOpenInNewTab, initialUrl })
 
   return (
@@ -53,18 +52,18 @@ export const LinkEditorPanel = ({ onSetLink, initialOpenInNewTab, initialUrl, la
           <input
             type="url"
             className="flex-1 bg-transparent outline-none min-w-[12rem] text-black text-sm "
-            placeholder="Enter URL"
+            placeholder="Введите URL-адрес"
             value={state.url}
             onChange={state.onChange}
           />
         </label>
         <Button variant="primary" buttonSize="small" type="submit" disabled={!state.isValidUrl}>
-          {lang.LinkEditorPanel.set}
+          Установить ссылку
         </Button>
       </form>
       <div className="mt-3">
         <label className="flex items-center justify-start gap-2 text-sm font-semibold cursor-pointer select-none text-neutral-500">
-        {lang.LinkEditorPanel.openInNew}
+          Открыть в новой вкладке
           <Toggle active={state.openInNewTab} onChange={state.setOpenInNewTab} />
         </label>
       </div>

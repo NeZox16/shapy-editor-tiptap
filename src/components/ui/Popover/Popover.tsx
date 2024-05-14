@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode } from 'react'
-import * as Popover from '@radix-ui/react-popover'
+import * as PopoverRadix from '@radix-ui/react-popover'
 import { Icon } from '../Icon'
+import { cn } from '@/src/lib/utils'
 
 type Props = {}
 
@@ -11,26 +12,26 @@ type TPopoverProps = {
     alingContent?: 'center' | "end"  | "start"
     visibleCloseButton?: boolean
     modal?: boolean 
+    className?: string
 }
 
-const PopoverMenu = ({triggerContent, alingContent = 'start', children, propsOffset = 4, visibleCloseButton = false, modal = false}: TPopoverProps, props: Props) => {
+export const Popover = ({triggerContent, alingContent = 'start', children, propsOffset = 4, visibleCloseButton = false, modal = false, className}: TPopoverProps, props: Props) => {
   return (
-    <Popover.Root modal={modal} >
-        <Popover.Trigger asChild>
+    <PopoverRadix.Root modal={modal} >
+        <PopoverRadix.Trigger asChild>
             {triggerContent}
-        </Popover.Trigger>
-        <Popover.Content
+        </PopoverRadix.Trigger>
+        <PopoverRadix.Content
             align={alingContent}
             sideOffset={propsOffset}
+            className={className}
             {...props}
         >
-            {visibleCloseButton && <Popover.Close>
+            {visibleCloseButton && <PopoverRadix.Close>
                     <Icon name='X' />
-                </Popover.Close>}
+                </PopoverRadix.Close>}
             {children}
-        </Popover.Content>
-    </Popover.Root>
+        </PopoverRadix.Content>
+    </PopoverRadix.Root>
   )
 }
-
-export default PopoverMenu

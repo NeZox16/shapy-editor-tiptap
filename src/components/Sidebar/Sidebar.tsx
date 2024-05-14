@@ -19,6 +19,17 @@ export const Sidebar = memo(
       [editor],
     )
 
+    const onUploadFile = useCallback(
+      (nameFile: string, sizeFile: string, typeFile: string) => {
+        if (nameFile && sizeFile && typeFile) {
+          editor.chain().setFileBlock(nameFile, typeFile, sizeFile).run()
+        }
+      },
+      [ editor],
+    )
+
+    const regexp = new RegExp(/\.(doc|docx|log|odt|pages|rtf|txt|csv|key|pps|ppt|pptx|tar|xml|json|pdf|xls|xlsx|db|sql|rar|gz|zip)/i)
+
     const { loading, uploadFile, files } = useUploader({ onUpload })
     const { handleUploadClick, ref } = useFileUpload()
     const { draggedInside, onDrop, onDragEnter, onDragLeave } = useDropZone({ uploader: uploadFile })
@@ -65,19 +76,35 @@ export const Sidebar = memo(
             </div>
           <ul className='flex flex-col divide-y divide-gs-default-ghost mt-3'>
             {files.length !== 0 && files.map((file, index) => (
-              <li key={index} className='p-4 transition-all hover:bg-black/50 flex items-center gap-3 cursor-pointer' onClick={() => onUpload(file.url)}>
-                <div className='w-8 h-8 block rounded bg-black/50'>
-                  <Image src={file.url} width={0} height={0} className='w-full h-full object-contain' alt={`Image ${file.name}`} />
-                </div>
-                <div className='flex flex-col'>
-                  <span className='text-xs'>
-                    {file.name}
-                  </span>
-                  <span className='text-[12px] text-white/50'>
-                    {formatBytes(file.size)} ★ {file.type.length !== 0 ? file.type.toUpperCase() : ''}
-                  </span>
-                </div>
-              </li>
+              file.name.match(regexp) ? (
+                <li key={index} className='p-4 transition-all hover:bg-black/50 flex items-center gap-3 cursor-pointer' onClick={() => onUploadFile(file.name, formatBytes(file.size), file.type)}>
+                  <div className='w-8 h-8 block rounded bg-black/50'>
+                    <Image src={file.url} width={0} height={0} className='w-full h-full object-contain' alt={`Image ${file.name}`} />
+                  </div>
+                  <div className='flex flex-col'>
+                    <span className='text-xs'>
+                      {file.name}
+                    </span>
+                    <span className='text-[12px] text-white/50'>
+                      {formatBytes(file.size)} ★ {file.type.toUpperCase()} 
+                    </span>
+                  </div>
+                </li>
+              ) : (
+                <li key={index} className='p-4 transition-all hover:bg-black/50 flex items-center gap-3 cursor-pointer' onClick={() => onUpload(file.url)}>
+                  <div className='w-8 h-8 block rounded bg-black/50'>
+                    <Image src={file.url} width={0} height={0} className='w-full h-full object-contain' alt={`Image ${file.name}`} />
+                  </div>
+                  <div className='flex flex-col'>
+                    <span className='text-xs'>
+                      {file.name}
+                    </span>
+                    <span className='text-[12px] text-white/50'>
+                      {formatBytes(file.size)} ★ {file.type.toUpperCase()} 
+                    </span>
+                  </div>
+                </li>
+              )
             ))}
           </ul>
         </div>

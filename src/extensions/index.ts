@@ -37,6 +37,7 @@ export { SlashCommand } from "./SlashCommand";
 export { FontSize } from "./FontSize";
 export { Figure } from "./Figure";
 export { Figcaption } from "./Figcaption";
+export { FileBlock } from "./FileBlock";
 export { BlockquoteFigure } from "./BlockquoteFigure";
 export { Quote } from "./BlockquoteFigure/Quote";
 export { QuoteCaption } from "./BlockquoteFigure/QuoteCaption";

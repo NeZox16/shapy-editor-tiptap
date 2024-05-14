@@ -6,7 +6,7 @@ import { LinkPreviewPanel } from '@/src/components/panels/LinkPreviewPanel'
 import { LinkEditorPanel } from '@/src/components/panels'
 
 
-export const LinkMenu = ({ editor, appendTo, lang }: MenuProps | any): JSX.Element => {
+export const LinkMenu = ({ editor, appendTo }: MenuProps | any): JSX.Element => {
   const [showEdit, setShowEdit] = useState(false)
 
   const shouldShow = useCallback(() => {
@@ -66,9 +66,9 @@ export const LinkMenu = ({ editor, appendTo, lang }: MenuProps | any): JSX.Eleme
       }}
     >
       {showEdit ? (
-        <LinkEditorPanel lang={lang.panel} initialUrl={link} initialOpenInNewTab={target === '_blank'} onSetLink={onSetLink} />
+        <LinkEditorPanel initialUrl={link} initialOpenInNewTab={target === '_blank'} onSetLink={onSetLink} />
       ) : (
-        <LinkPreviewPanel lang={lang.panel} url={link} onClear={onUnsetLink} onEdit={handleEdit} />
+        <LinkPreviewPanel url={link} onClear={onUnsetLink} onEdit={handleEdit} />
       )}
     </BaseBubbleMenu>
   )

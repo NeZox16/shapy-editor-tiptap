@@ -53,7 +53,7 @@
   }
 
   a.link {
-    @apply text-gs-green font-extrabold;
+    @apply text-gs-green font-extrabold hover:underline;
   }
 
   mark {

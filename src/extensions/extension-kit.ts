@@ -42,6 +42,7 @@ import {
   Mathematics,
   Mention,
   Hints,
+  FileBlock,
 } from ".";
 import { CodeBlockLowlight } from "@tiptap/extension-code-block-lowlight";
 import { ImageUpload } from "./ImageUpload";
@@ -114,6 +115,7 @@ export const ExtensionKit = ({}) => [
       });
     },
   }),
+  FileBlock,
   Emoji.configure({
     enableEmoticons: true,
     suggestion: emojiSuggestion,

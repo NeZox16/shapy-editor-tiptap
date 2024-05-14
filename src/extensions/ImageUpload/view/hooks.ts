@@ -22,10 +22,11 @@ export const useUploader = ({
       try {
         console.log(file);
         const url = await API.uploadImage();
+        const fileType = file.name.split(".");
         const fileData: IFile = {
           name: file.name,
           size: file.size,
-          type: file.type.split("/")[1],
+          type: fileType[fileType.length - 1],
           url: url,
         };
         setFiles((prev) => [
